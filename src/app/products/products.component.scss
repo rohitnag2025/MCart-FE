@@ -11,3 +11,11 @@
   margin-bottom: 2rem;
   color: #1976d2;
 }
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}

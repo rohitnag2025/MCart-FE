@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, CategoryNode } from '../products/category.service';
+import { Router } from '@angular/router';
 import { CategoryMenuComponent } from '../products/category-menu.component';
 import { GenderMenuPipe } from '../products/gender-menu.pipe';
 
@@ -13,11 +14,15 @@ import { GenderMenuPipe } from '../products/gender-menu.pipe';
 export class HomeComponent implements OnInit {
   categories: CategoryNode[] = [];
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService, private router: Router) {}
 
   ngOnInit() {
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data;
     });
+  }
+
+  onGlobalCategorySelected(categoryId: number) {
+    this.router.navigate(['/products'], { queryParams: { categoryId } });
   }
 }

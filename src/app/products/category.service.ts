@@ -22,11 +22,19 @@ export class CategoryService {
   }
 
   private mapCategory(cat: any): CategoryNode {
+    // Debug log to verify backend structure at every level
+    console.log('Mapping category:', cat);
     return {
-      CategoryId: cat.categoryId,
-      Name: cat.name,
-      Gender: cat.gender,
-      Children: Array.isArray(cat.subcategories) ? cat.subcategories.map((c: any) => this.mapCategory(c)) : []
+      CategoryId: cat.categoryId ?? cat.CategoryId,
+      Name: cat.name ?? cat.Name,
+      Gender: cat.gender ?? cat.Gender,
+      Children: Array.isArray(cat.subcategories ?? cat.Children)
+        ? (cat.subcategories ?? cat.Children).map((c: any) => this.mapCategory(c))
+        : []
     };
+  }
+  
+  getProductsByCategory(categoryId: number): Observable<any> {
+    return this.http.get(`http://localhost:5002/api/Products/category/${categoryId}`);
   }
 }

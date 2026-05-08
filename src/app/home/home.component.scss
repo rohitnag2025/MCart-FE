@@ -32,7 +32,8 @@ $dark: #222;
     transition: color 0.2s;
     &:hover { color: #ffeb3b; }
   }
-  .main-nav a {
+  .main-nav a,
+  .user-links a {
     color: $secondary;
     margin: 0 1.2rem;
     text-decoration: none;
@@ -41,27 +42,18 @@ $dark: #222;
     letter-spacing: 1px;
     transition: color 0.2s;
     position: relative;
+    cursor: pointer;
     &:hover {
       color: #ffeb3b;
       text-decoration: underline;
     }
   }
-  .user-links a {
-    color: $secondary;
-    margin-left: 1.2rem;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    transition: color 0.2s;
-    &:hover { color: #ffeb3b; text-decoration: underline; }
-    cursor: pointer;
-  }
 }
 
 .hero-banner {
-  background: linear-gradient(90deg, $primary 60%, #42a5f5 100%);
-  color: $secondary;
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  /* soothing blue gradient */
+  color: $dark;
   padding: 2.2rem 0 1.5rem 0;
   text-align: center;
   .banner-content {
@@ -85,8 +77,14 @@ $dark: #222;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s;
-    &:hover { background: #fff176; }
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    &:hover {
+      background: #fff176;
+      color: #1976d2;
+      box-shadow: 0 2px 8px rgba(25,118,210,0.10);
+      text-decoration: underline;
+    }
   }
 }
 
@@ -178,7 +176,12 @@ $dark: #222;
     margin-left: 1.5rem;
     text-decoration: none;
     font-weight: 500;
-    &:hover { color: #ffeb3b; }
+    cursor: pointer;
+    transition: color 0.2s;
+    &:hover {
+      color: #ffeb3b;
+      text-decoration: underline;
+    }
   }
 }
 

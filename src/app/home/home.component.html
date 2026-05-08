@@ -17,6 +17,7 @@
 
 
 
+
 <section class="hero-banner">
   <div class="container banner-content">
     <h1>Welcome to MCart</h1>
@@ -24,12 +25,9 @@
   </div>
 </section>
 
-<!-- Men & Women Menu Bar -->
-<section class="gender-menu-section">
-  <div class="container">
-    <app-category-menu [categories]="categories | genderMenu:'Men,Women'"></app-category-menu>
-  </div>
-</section>
+<!-- Global Menu moved below banner -->
+<app-category-menu [categories]="categories" (categorySelected)="onGlobalCategorySelected($event)"></app-category-menu>
+
 
 
 <footer class="main-footer">
