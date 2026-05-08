@@ -22,8 +22,6 @@ export class CategoryService {
   }
 
   private mapCategory(cat: any): CategoryNode {
-    // Debug log to verify backend structure at every level
-    console.log('Mapping category:', cat);
     return {
       CategoryId: cat.categoryId ?? cat.CategoryId,
       Name: cat.name ?? cat.Name,

@@ -149,10 +149,7 @@ export class CategoryMenuComponent {
     //   event.stopPropagation();
     // }
     if (category && category.CategoryId) {
-      console.log('Clicked CategoryId:', category.CategoryId);
       this.categorySelected.emit(category.CategoryId);
-    } else {
-      console.warn('No CategoryId found for clicked category:', category);
     }
   }
 }
