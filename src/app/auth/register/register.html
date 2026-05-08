@@ -1,0 +1,21 @@
+<div class="register-container">
+	<h2>Register</h2>
+	<form (submit)="onRegister($event)">
+		<label>Gender</label>
+		<select name="gender" [(ngModel)]="gender" required>
+			<option value="">Select Gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			<option value="Other">Other</option>
+		</select>
+		<label>Email</label>
+		<input type="email" name="email" [(ngModel)]="email" required />
+		<label>Password</label>
+		<input type="password" name="password" [(ngModel)]="password" required minlength="6" />
+		<label>Phone</label>
+		<input type="tel" name="phone" [(ngModel)]="phone" required pattern="[0-9]{10,}" />
+		<button type="submit">Register</button>
+	</form>
+	<div *ngIf="error" class="error">{{ error }}</div>
+	<div *ngIf="success" class="success">{{ success }}</div>
+</div>

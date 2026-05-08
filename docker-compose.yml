@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  mcart-frontend:
+    build: .
+    ports:
+      - "4200:80"
+    restart: unless-stopped
