@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-reset-password',
+  imports: [CommonModule, FormsModule],
   templateUrl: './reset-password.html',
   styleUrls: ['./reset-password.scss'],
 })

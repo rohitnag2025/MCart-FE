@@ -1,0 +1,44 @@
+
+<header class="main-header">
+  <div class="container header-content">
+    <div class="logo">MCart</div>
+    <nav class="main-nav">
+      <a routerLink="/">Home</a>
+      <a routerLink="/products">Products</a>
+      <a routerLink="/cart">Cart</a>
+      <a routerLink="/contact">Contact</a>
+    </nav>
+    <div class="user-links">
+      <a routerLink="/auth/login">Login</a>
+      <a routerLink="/user/profile">Profile</a>
+    </div>
+  </div>
+</header>
+
+
+
+<section class="hero-banner">
+  <div class="container banner-content">
+    <h1>Welcome to MCart</h1>
+    <p>Discover the latest trends and best deals in fashion, electronics, and more!</p>
+  </div>
+</section>
+
+<!-- Men & Women Menu Bar -->
+<section class="gender-menu-section">
+  <div class="container">
+    <app-category-menu [categories]="categories | genderMenu:'Men,Women'"></app-category-menu>
+  </div>
+</section>
+
+
+<footer class="main-footer">
+  <div class="container footer-content">
+    <div>© 2026 MCart. All rights reserved.</div>
+    <nav class="footer-nav">
+      <a routerLink="/privacy">Privacy Policy</a>
+      <a routerLink="/terms">Terms of Service</a>
+      <a routerLink="/contact">Contact</a>
+    </nav>
+  </div>
+</footer>

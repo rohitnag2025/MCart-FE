@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-register',
+  imports: [CommonModule, FormsModule],
   templateUrl: './register.html',
   styleUrls: ['./register.scss'],
 })

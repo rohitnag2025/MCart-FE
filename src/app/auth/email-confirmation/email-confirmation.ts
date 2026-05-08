@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-email-confirmation',
+  imports: [CommonModule],
   templateUrl: './email-confirmation.html',
   styleUrls: ['./email-confirmation.scss'],
 })

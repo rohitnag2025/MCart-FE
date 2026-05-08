@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
 	{
@@ -38,12 +39,12 @@ export const routes: Routes = [
 		loadChildren: () => import('./contact/contact-module').then(m => m.ContactModule)
 	},
 	{
-		path: '',
-		redirectTo: 'products',
-		pathMatch: 'full'
-	},
-	{
-		path: '**',
-		redirectTo: 'products'
-	}
+		   path: '',
+		   component: HomeComponent,
+		   pathMatch: 'full'
+	   },
+	   {
+		   path: '**',
+		   redirectTo: ''
+	   }
 ];
