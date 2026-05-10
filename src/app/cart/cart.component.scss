@@ -1,0 +1,128 @@
+.cart-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+}
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+  /* Only keep the modern product-card style for cart-card */
+.cart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(25,118,210,0.08);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.18s;
+  padding: 1rem;
+  cursor: pointer;
+  min-width: 180px;
+  max-width: 220px;
+  margin: 0.5rem;
+}
+.cart-card:hover {
+  box-shadow: 0 8px 32px rgba(25,118,210,0.13);
+  transform: translateY(-4px) scale(1.04);
+  cursor: pointer;
+}
+.cart-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 0.7rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+.cart-info {
+  width: 100%;
+  text-align: center;
+}
+.cart-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+.cart-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ff5e62;
+  margin-bottom: 0.2rem;
+}
+.cart-discount {
+  color: #43a047;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.cart-qty button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.cart-qty button:hover {
+  background: #1565c0;
+}
+.remove-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.18s;
+}
+.remove-btn:hover {
+  background: #b71c1c;
+}
+.cart-summary {
+  margin-top: 2rem;
+  text-align: right;
+}
+.cart-total {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.confirm-btn {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.confirm-btn:hover {
+  background: #2e7d32;
+}
+.empty {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+}

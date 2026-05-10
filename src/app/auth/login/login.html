@@ -4,11 +4,11 @@
 		<label>Email</label>
 		<input type="email" name="email" [(ngModel)]="email" required />
 		<label>Password</label>
-		<input type="password" name="password" [(ngModel)]="password" required />
+		<input type="password" name="password" [(ngModel)]="passwordHash" required />
 		<button type="submit">Login</button>
 	</form>
 	<div class="social-login">
-		<p>Or login with:</p>
+		<p>Or login with :</p>
 		<button (click)="loginWithProvider('facebook')">Login with Facebook</button>
 		<button (click)="loginWithProvider('twitter')">Login with Twitter</button>
 	</div>

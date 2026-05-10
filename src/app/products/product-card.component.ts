@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { CartService } from '../shared/cart.service';
+import { WishlistService } from '../shared/wishlist.service';
+import { CompareService } from '../shared/compare.service';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-product-card',
@@ -12,9 +16,37 @@ import { CommonModule } from '@angular/common';
         <div class="product-name">{{ product.name }}</div>
         <div class="product-price">₹{{ product.price | number:'1.2-2' }}</div>
       </div>
+      <div class="product-actions">
+        <button class="btn-cart" (click)="$event.stopPropagation(); onAddToCart()">Add to Cart</button>
+        <button class="btn-quick" (click)="$event.stopPropagation(); onQuickView()">Quick View</button>
+        <button class="btn-compare" (click)="$event.stopPropagation(); onCompare()">Compare</button>
+        <button class="btn-wishlist" (click)="$event.stopPropagation(); onAddToWishList()">Wish List</button>
+      </div>
     </div>
   `,
   styles: [`
+        .product-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          justify-content: center;
+          margin-top: 0.7rem;
+        }
+        .product-actions button {
+          background: #1976d2;
+          color: #fff;
+          border: none;
+          border-radius: 20px;
+          padding: 0.4rem 1.1rem;
+          font-size: 0.95rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.18s, color 0.18s;
+        }
+        .product-actions button:hover {
+          background: #1565c0;
+          color: #ffeb3b;
+        }
     .product-card {
       background: #fff;
       border-radius: 12px;
@@ -61,11 +93,48 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductCardComponent {
   @Input() product: any;
+  @Output() quickView = new EventEmitter<any>();
+
+  private cartService = inject(CartService);
+  private wishlistService = inject(WishlistService);
+  private compareService = inject(CompareService);
 
   getImageUrl(blobName: string): string {
     if (!blobName || blobName.trim() === '') {
       return 'https://via.placeholder.com/200x160?text=No+Image';
     }
-    return `http://localhost:5002/images/${blobName}`;
+    return `${environment.apiUrl.replace(/\/api$/, '')}/images/${blobName}`;
+  }
+
+  onAddToCart() {
+    const userId = localStorage.getItem('userId');
+    const productWithUser = { ...this.product, userId };
+    this.cartService.addToCart(productWithUser).subscribe({
+      next: () => {
+        // Refresh cart count after adding
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+          this.cartService.getCartByUserId(userId).subscribe();
+        }
+        // Optionally show a toast/snackbar here
+      },
+      error: () => {
+        // Optionally show an error toast/snackbar here
+      }
+    });
+  }
+
+  onQuickView() {
+    this.quickView.emit(this.product);
+  }
+
+  onCompare() {
+    this.compareService.addToCompare(this.product);
+    // Optionally show a toast/snackbar here
+  }
+
+  onAddToWishList() {
+    this.wishlistService.addToWishlist(this.product);
+    // Optionally show a toast/snackbar here
   }
 }

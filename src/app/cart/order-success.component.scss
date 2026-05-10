@@ -1,0 +1,28 @@
+.order-success-page {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.order-success-page h2 {
+  color: #43a047;
+  margin-bottom: 1rem;
+}
+.order-success-page button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background 0.18s;
+}
+.order-success-page button:hover {
+  background: #1565c0;
+}
