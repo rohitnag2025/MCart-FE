@@ -31,7 +31,7 @@ export class Login {
     try {
       // Check if there was a guest cart (no userId before login)
       const guestUserId = localStorage.getItem('userId');
-      const response = await this.http.post('http://localhost:5001/api/Users/login', {
+      const response = await this.http.post('http://127.0.0.1:5001/api/Users/login', {
         email: this.email,
         passwordHash: this.passwordHash
       }, { observe: 'response' }).toPromise();
@@ -96,5 +96,11 @@ export class Login {
     } else if (provider === 'twitter') {
       this.router.navigate(['/auth/twitter-login']);
     }
+  }
+
+  loginWithXNew() {
+    // Redirect to backend Twitter login endpoint
+    const returnUrl = encodeURIComponent(window.location.origin + '/auth/social-callback');
+    window.location.href = `http://127.0.0.1:5001/api/users/external-login/twitter?returnUrl=${returnUrl}`;
   }
 }
