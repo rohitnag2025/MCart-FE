@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
   decrease(item: any) {
     if (item.quantity > 1) {
       // Call remove endpoint to decrease quantity by 1
-      this.cartService.removeFromCart(item.productId).subscribe({
+      this.cartService.removeOneFromCart(item).subscribe({
         next: () => this.refreshCart(),
         error: () => {/* Optionally show error */}
       });

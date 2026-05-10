@@ -42,7 +42,7 @@ export class CartService {
       userId: userId ? userId : null,
       productId
     };
-    return this.http.post('http://localhost:5003/api/Orders/cart/remove', payload);
+    return this.http.post('http://localhost:5003/api/Orders/cart/remove-product', payload);
   }
 
   removeOneFromCart(product: any) {
@@ -51,7 +51,7 @@ export class CartService {
       productId: product.productId,
       userId: userId ? userId : null
     };
-    return this.http.post(`${this.apiUrl}/removeOne`, payload);
+    return this.http.post(`${this.apiUrl}/remove`, payload);
   }
 
   clearCart() {
