@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService, CategoryNode } from '../products/category.service';
 import { Router } from '@angular/router';
 import { CategoryMenuComponent } from '../products/category-menu.component';
-import { GenderMenuPipe } from '../products/gender-menu.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CategoryMenuComponent, GenderMenuPipe],
+  imports: [CategoryMenuComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -24,5 +23,9 @@ export class HomeComponent implements OnInit {
 
   onGlobalCategorySelected(categoryId: number) {
     this.router.navigate(['/products'], { queryParams: { categoryId } });
+  }
+
+  goToCart() {
+    this.router.navigate(['/cart']);
   }
 }

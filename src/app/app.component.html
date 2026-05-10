@@ -1,12 +1,49 @@
-<ng-container *ngIf="isLoggedIn; else loginOnly">
-	<div class="top-bar">
-		<div class="top-bar-right">
-			<a routerLink="/user/profile">Profile</a>
-			<a href="#" (click)="onLogout()">Logout</a>
+<div *ngIf="loginSuccessMessage" class="success-message">
+	{{ loginSuccessMessage }}
+</div>
+<!-- Header (always visible) -->
+<div class="top-bar">
+	<div class="top-bar-left">
+		<a routerLink="/">Home</a>
+		<div class="cart-menu-wrapper" style="position: relative; display: inline-block;">
+			<app-cart-link [cartCount]="cartCount" [goToCart]="goToCart.bind(this)" (mouseenter)="showCartMenu = true" (mouseleave)="showCartMenu = false"></app-cart-link>
+			<div *ngIf="showCartMenu" class="cart-dropdown-menu" style="position: absolute; top: 2.2rem; right: 0; background: #fff; border: 1px solid #ddd; border-radius: 8px; min-width: 220px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); z-index: 100;">
+				<div *ngIf="cartService.getCart().length; else emptyCart" style="padding: 0.7rem 1rem;">
+					<div *ngFor="let item of cartService.getCart()" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+						<span>{{ item.productName || item.name }}</span>
+						<span>x{{ item.qty || item.quantity || 1 }}</span>
+					</div>
+					<div style="text-align: right; margin-top: 0.5rem;">
+						<button class="login-btn" style="padding: 0.2rem 0.8rem; font-size: 0.9rem;" (click)="goToCart()">View Cart</button>
+					</div>
+				</div>
+				<ng-template #emptyCart>
+					<div style="padding: 1rem; color: #888; text-align: center;">Cart is empty</div>
+				</ng-template>
+			</div>
 		</div>
 	</div>
-</ng-container>
-<ng-template #loginOnly>
-	<!-- Only show routed content (login, forgot password, etc.) when not logged in -->
-</ng-template>
-<router-outlet />
+	<div class="top-bar-right">
+		<ng-container *ngIf="isLoggedIn; else showLogin">
+			<a routerLink="/user/profile">Profile</a>
+			<a href="#" (click)="onLogout()">Logout</a>
+		</ng-container>
+		<ng-template #showLogin>
+			<button class="login-btn" (click)="openLoginModal()">Login</button>
+		</ng-template>
+	</div>
+</div>
+<!-- Banner (always visible, add your banner here if needed) -->
+<!-- <div class="banner">Your banner here</div> -->
+
+<!-- Login Modal (only for guests) -->
+<div *ngIf="showLoginModal" class="modal-backdrop" (click)="closeLoginModal()"></div>
+<div *ngIf="showLoginModal" class="login-modal">
+	<div class="modal-content" (click)="$event.stopPropagation()">
+		<button class="close-btn" (click)="closeLoginModal()">&times;</button>
+		<app-login (loginSuccess)="closeLoginModal()"></app-login>
+	</div>
+</div>
+
+<!-- Main content -->
+<router-outlet></router-outlet>

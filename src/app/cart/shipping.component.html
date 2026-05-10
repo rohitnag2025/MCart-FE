@@ -1,0 +1,34 @@
+<div class="shipping-page">
+  <h2>Shipping Address</h2>
+  <form (ngSubmit)="submit()" #shippingForm="ngForm">
+    <div class="form-row">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="shipping.name" name="name" required />
+    </div>
+    <div class="form-row">
+      <label>Address</label>
+      <input type="text" [(ngModel)]="shipping.address" name="address" required />
+    </div>
+    <div class="form-row">
+      <label>City</label>
+      <input type="text" [(ngModel)]="shipping.city" name="city" required />
+    </div>
+    <div class="form-row">
+      <label>State</label>
+      <input type="text" [(ngModel)]="shipping.state" name="state" required />
+    </div>
+    <div class="form-row">
+      <label>ZIP</label>
+      <input type="text" [(ngModel)]="shipping.zip" name="zip" required />
+    </div>
+    <div class="form-row">
+      <label>Country</label>
+      <input type="text" [(ngModel)]="shipping.country" name="country" required />
+    </div>
+    <div class="form-row">
+      <label>Phone</label>
+      <input type="text" [(ngModel)]="shipping.phone" name="phone" required />
+    </div>
+    <button class="submit-btn" type="submit">Proceed to Payment</button>
+  </form>
+</div>
